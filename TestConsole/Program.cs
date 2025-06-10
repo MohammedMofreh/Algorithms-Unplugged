@@ -50,6 +50,7 @@ class Program
         }
     }  
 
+
     static int BinarySearch(string[] array, string key)
     {
         int left = 0;
