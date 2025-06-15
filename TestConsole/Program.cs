@@ -41,9 +41,9 @@ class Program
 
         #endregion
 
-
     }
 
+    #region InsertionSort
     static void InsertionSort(int[] A)
     {
         int n = A.Length;
@@ -63,6 +63,10 @@ class Program
 
         }
     }
+
+    #endregion    
+    
+    #region BinarySearch
     static int BinarySearch(string[] array, string key)
     {
         int left = 0;
@@ -83,8 +87,10 @@ class Program
         }
 
         return -1; // Not found
-    }
+    } 
+    #endregion
 
+    #region MergeSort
     static void MergeSort(int[] array, int left, int right)
     {
         if (left < right)
@@ -115,7 +121,8 @@ class Program
     static void PrintArray(int[] array)
     {
         Console.WriteLine(string.Join(" ", array));
-    }
+    } 
+    #endregion
 
 
 }
