@@ -26,8 +26,22 @@ class Program
         foreach (int num in numbers)
         {
             Console.Write(num + " ");
-        } 
+        }
         #endregion
+
+        #region MergeSort
+        int[] mergeArray = { 5, 3, 8, 4, 2, 7, 1, 6 };
+
+        Console.WriteLine("\nOriginal Array:");
+        PrintArray(mergeArray);
+
+        MergeSort(mergeArray, 0, mergeArray.Length - 1);
+        Console.WriteLine("\nAfter MergeSort:");
+        PrintArray(mergeArray);
+
+        #endregion
+
+
     }
 
     static void InsertionSort(int[] A)
@@ -48,9 +62,7 @@ class Program
             A[previous + 1] = next; // insert the next element in the correct position
 
         }
-    }  
-
-
+    }
     static int BinarySearch(string[] array, string key)
     {
         int left = 0;
@@ -72,4 +84,38 @@ class Program
 
         return -1; // Not found
     }
+
+    static void MergeSort(int[] array, int left, int right)
+    {
+        if (left < right)
+        {
+            int mid = (left + right) / 2;
+
+            MergeSort(array, left, mid);
+            MergeSort(array, mid + 1, right);
+            Merge(array, left, mid, right);
+        }
+    }
+
+    static void Merge(int[] array, int left, int mid, int right)
+    {
+        int[] result = new int[right - left + 1];
+        int i = left, j = mid + 1, k = 0;
+
+        while (i <= mid && j <= right)
+            result[k++] = (array[i] < array[j]) ? array[i++] : array[j++];
+
+        while (i <= mid) result[k++] = array[i++];
+        while (j <= right) result[k++] = array[j++];
+
+        for (int x = 0; x < result.Length; x++)
+            array[left + x] = result[x];
+    }
+
+    static void PrintArray(int[] array)
+    {
+        Console.WriteLine(string.Join(" ", array));
+    }
+
+
 }
